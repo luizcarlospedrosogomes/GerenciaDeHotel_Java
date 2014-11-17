@@ -1,12 +1,12 @@
-
+﻿
 Gestão de Hotel
 a.  Funcionalidades:
-i.  Cadastro de Quartos
-ii.  Cadastro de Serviços
-iii.  Cadastro de Hóspedes
-iv.  Fazer Reserva 
-v.  Fazer Check-In
-vi.  Fazer Check-Out
+i.  Cadastro de Quartos > OK
+ii.  Cadastro de Serviços > OK
+iii.  Cadastro de Hóspedes > OK
+iv.  Fazer Reserva >ok
+v.  Fazer Check-In >ok
+vi.  Fazer Check-Out >ok	
 vii.  Mapa de Ocupação de Quartos em Tela
 viii.  Solicitação de Serviços 
 ix.  Relatórios: de Reservas por períodos, Financeiro e Mapa de Ocupação 
