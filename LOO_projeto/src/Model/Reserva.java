@@ -15,7 +15,7 @@ public class Reserva  implements java.io.Serializable {
      private Date dataInicio;
      private Date dataFim;
      private Integer confirmado;
-
+     private int codigoCliente;
     public Reserva() {
     }
 
@@ -67,6 +67,21 @@ public class Reserva  implements java.io.Serializable {
         this.confirmado = confirmado;
     }
 
+    /**
+     * @return the codigoCliente
+     */
+    public int getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    /**
+     * @param codigoCliente the codigoCliente to set
+     */
+    public void setCodigoCliente(int codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
+  
 
 
 

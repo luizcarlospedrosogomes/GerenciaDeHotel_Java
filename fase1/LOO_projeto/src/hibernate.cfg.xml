@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/LOO_projeto</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">sa</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="Model/ConsumoServico.hbm.xml"/>
+    <mapping resource="Model/Servico.hbm.xml"/>
+    <mapping resource="Model/Status.hbm.xml"/>
+    <mapping resource="Model/Hospede.hbm.xml"/>
+    <mapping resource="Model/Checkout.hbm.xml"/>
+    <mapping resource="Model/Reserva.hbm.xml"/>
+    <mapping resource="Model/Quarto.hbm.xml"/>
+    <mapping resource="Model/Checkin.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

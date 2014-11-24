@@ -20,10 +20,8 @@ public class Hospede  implements java.io.Serializable {
      private Set statuses = new HashSet(0);
      private Set checkins = new HashSet(0);
 
-    public Hospede() {
-    }
-
-	
+    public Hospede(){}
+    
     public Hospede(int codigo) {
         this.codigo = codigo;
     }
@@ -37,7 +35,8 @@ public class Hospede  implements java.io.Serializable {
        this.statuses = statuses;
        this.checkins = checkins;
     }
-   
+
+    
     public int getCodigo() {
         return this.codigo;
     }

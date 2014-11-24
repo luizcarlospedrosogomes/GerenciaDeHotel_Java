@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/11/2014 01:42:29 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Model.Hospede" table="hospede" schema="public">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="100" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="cpf" length="20" />
+        </property>
+        <set name="checkouts" table="checkout" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_cliente" />
+            </key>
+            <one-to-many class="Model.Checkout" />
+        </set>
+        <set name="consumoServicos" table="consumo_servico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_cliente" />
+            </key>
+            <one-to-many class="Model.ConsumoServico" />
+        </set>
+        <set name="reservas" table="reserva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_cliente" />
+            </key>
+            <one-to-many class="Model.Reserva" />
+        </set>
+        <set name="statuses" table="status" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_cliente" />
+            </key>
+            <one-to-many class="Model.Status" />
+        </set>
+        <set name="checkins" table="checkin" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_cliente" />
+            </key>
+            <one-to-many class="Model.Checkin" />
+        </set>
+    </class>
+</hibernate-mapping>

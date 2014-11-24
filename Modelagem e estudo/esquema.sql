@@ -50,3 +50,8 @@ alter table consumo_servico add foreign key (cod_cliente) references hospede(cod
 alter table checkout add foreign key (cod_cliente) references hospede(codigo);
 alter table checkin add foreign key (cod_cliente) references hospede(codigo);
 alter table reserva add foreign key (cod_cliente) references hospede(codigo);
+
+alter table hospede add constraint cpf_unico unique(cpf);
+
+alter table quarto add column tipo integer;
+alter table quarto add constraint quarto_numero unique(numero);
