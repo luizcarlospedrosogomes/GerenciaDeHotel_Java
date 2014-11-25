@@ -30,8 +30,8 @@ public boolean inserirReserva(String codigoCliente, String dataInicio, String da
 }
 
 private Date converteData(String data) throws ParseException{
-SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
-java.sql.Date datas = new java.sql.Date(format.parse(data).getTime()); 
-return datas;
+    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    java.sql.Date datas = new java.sql.Date(format.parse(data).getTime());
+    return datas;
 }
 }

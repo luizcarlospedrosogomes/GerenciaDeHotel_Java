@@ -16,13 +16,18 @@ public class CadastroCliente {
      this.hos     = new HospedeDAO();
      
     }
-    public boolean insereCliente(String nome, String cpf) throws SQLException{
-          if(!nome.equals("") && !cpf.equals("")) { 
-                this.hospede.setNome(nome);
-                this.hospede.setCpf(cpf);
-                this.hos.inserirCliente(hospede);
-            return true;
-           }
+    public boolean insereCliente(String nome, String cpf, String operacao) throws SQLException{
+        if(!nome.equals("") && !cpf.equals("")) { 
+           if(operacao.equals("-1")){
+               this.hospede.setNome(nome);
+               this.hospede.setCpf(cpf);
+               this.hos.inserirCliente(hospede);
+               return true;
+            }else{
+              editarCliente(nome, cpf, operacao);
+              return true;
+             }
+        } 
         return false;
     }
     
@@ -41,6 +46,37 @@ public class CadastroCliente {
     
     public String ultimoID() throws SQLException{
      return hos.ultimoID();
+    }
+    
+    private void editarCliente(String nome, String cpf, String operacao) throws SQLException{
+        this.hospede.setNome(nome);
+        this.hospede.setCpf(cpf);
+        
+        this.hospede.setCodigo(Integer.parseInt(operacao));
+        this.hos.editarCliente(hospede);
+    }
+    
+    public void excluirCliente(String codigo) throws SQLException{
+      this.hospede.setCodigo(Integer.parseInt(codigo));
+      this.hos.excluirCliente(hospede);
+    }
+    
+    public ArrayList<Hospede> listarCliente() throws SQLException{
+        ArrayList<Hospede> lista = new ArrayList<>();
+        ResultSet dados = this.hos.listar();
+        while(dados.next()){
+           Hospede hospede_lista = new Hospede();
+           hospede_lista.setCodigo(dados.getInt(1));
+           hospede_lista.setNome(dados.getString(2));
+           hospede_lista.setCpf(dados.getString(3));
+           lista.add(hospede_lista);
+        }
+      
+        return lista;
+    }
+    
+    public int getCodigoLista(String codigo){
+      return Integer.parseInt(codigo);
     }
     
 }

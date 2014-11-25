@@ -1,24 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package View;
 
 import Controller.CadastroCliente;
 import Controller.CadastroReserva;
-import Model.Hospede;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author LuizCarlos
- */
+
 public class FormReserva extends javax.swing.JFrame {
 
     /**
@@ -261,11 +251,20 @@ public class FormReserva extends javax.swing.JFrame {
     //ao sair busca hospede
     private void jTextFieldCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCodigoFocusLost
         try {
+           
             CadastroCliente  cadCliente = new CadastroCliente();
-            //nome
-            jTextFieldNome.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getNome());
-            //cpf
-            jTextFieldCPF.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getCpf());
+            if(cadCliente.preencheCampos(jTextFieldCodigo.getText()).size() > 0){
+                //nome
+                jTextFieldNome.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getNome());
+                 //cpf
+                jTextFieldCPF.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getCpf());
+                jToggleButtonConfirma.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Hospede não encontrado","Veriquife codigo hospede", JOptionPane.ERROR_MESSAGE);
+                jTextFieldNome.setText("Hospede não encontrado");
+                jTextFieldCPF.setText("");
+                jToggleButtonConfirma.setEnabled(false);
+            }
         }catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(this, e);
        }catch(SQLException e){
@@ -279,12 +278,14 @@ public class FormReserva extends javax.swing.JFrame {
            if (cadReserva.inserirReserva(jTextFieldCodigo.getText(), jFormattedTextFieldDataInicio.getText(), jFormattedTextFieldDataFim.getText())){
                JOptionPane.showMessageDialog(this, "Reserva inserida com sucesso");
            }else
-               JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+               JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Campos incompletos",JOptionPane.ERROR_MESSAGE);
         }catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(this, e);
-       }catch(SQLException e){
+        }catch(SQLException e){
            JOptionPane.showMessageDialog(this, e);
-       } 
+        }catch (ParseException e){
+            JOptionPane.showMessageDialog(this, "Data preenchida incorretamente.", "Erro no Preenchimento campo Periodo", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jToggleButtonConfirmaActionPerformed
     
     private void habilitaInsercao(){

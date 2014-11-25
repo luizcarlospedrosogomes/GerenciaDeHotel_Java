@@ -30,13 +30,26 @@ public String ultimoID() throws SQLException{
  
 public ResultSet preencheCampos(String codigo) throws SQLException{
     this.sessao = con.createStatement();
-   // String sql = "select codigo, nome, cpf from hospede where codigo = ?";
-   // this.ps = con.prepareStatement(sql);
-   // ps.setInt(1, Integer.getInteger(codigo));
-   // System.out.println(sql);
     return  sessao.executeQuery("select codigo, nome, cpf from hospede where codigo = "+codigo);
   
 }
 
+public void editarCliente(Hospede hospede) throws SQLException{
+     this.ps =  con.prepareStatement("update hospede set nome = ? , cpf = ? where codigo = ?");
+     this.ps.setString(1,hospede.getNome());
+     this.ps.setString(2,hospede.getCpf());
+     this.ps.setInt(3, hospede.getCodigo());
+     this.ps.executeUpdate();
+}
 
+public void excluirCliente(Hospede hospede) throws SQLException{
+     this.ps =  con.prepareStatement("delete from hospede where codigo = ?");
+     this.ps.setInt(1, hospede.getCodigo());
+     this.ps.executeUpdate();
+}
+
+public ResultSet listar() throws SQLException{
+     this.sessao = con.createStatement();
+    return  sessao.executeQuery("select codigo, nome, cpf from hospede order by codigo");
+}
 }

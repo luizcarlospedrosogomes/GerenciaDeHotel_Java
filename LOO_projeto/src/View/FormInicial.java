@@ -1,25 +1,13 @@
 package View;
 
 import DAO.Banco;
-import static Model.NewHibernateUtil.getSessionFactory;
-import java.awt.Window;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import org.hibernate.SessionFactory;
 
-/**
- *
- * @author LuizCarlos
- */
+
 public class FormInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormInicial
-     */
     public FormInicial() throws ClassNotFoundException, SQLException {
         initComponents();
         tela();
