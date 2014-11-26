@@ -353,7 +353,7 @@ public class FormCadastroCliente extends javax.swing.JFrame {
         });
     }
    public void getCodigoTable(String codigo){
-       System.out.println("setou "+ codigo);
+       //System.out.println("setou "+ codigo);
      jTextFieldCodigo.setText(codigo);
    }
     public void habilitaInsercao(){

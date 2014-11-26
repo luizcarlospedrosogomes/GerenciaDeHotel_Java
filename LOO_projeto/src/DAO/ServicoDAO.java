@@ -3,6 +3,7 @@ package DAO;
 
 import Model.Servico;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ServicoDAO extends Banco{
@@ -24,5 +25,18 @@ public class ServicoDAO extends Banco{
         this.dados.next();
         return codigo = dados.getString("codigo");
 
+    }
+    
+    public void editarServico(Servico servico) throws SQLException{
+     this.ps =  con.prepareStatement("update servico set descricao = ? , valor = ? where codigo = ?");
+     this.ps.setString(1,servico.getDescricao());
+     this.ps.setBigDecimal(2,servico.getValor());
+     this.ps.setInt(3, servico.getCodigo());
+     this.ps.executeUpdate();
+    }
+    
+    public ResultSet listar() throws SQLException{
+    this.sessao = con.createStatement();
+    return  sessao.executeQuery("select codigo, descricao, valor from servico order by codigo");
     }
 }

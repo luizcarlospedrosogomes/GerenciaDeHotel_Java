@@ -49,7 +49,7 @@ public void excluirCliente(Hospede hospede) throws SQLException{
 }
 
 public ResultSet listar() throws SQLException{
-     this.sessao = con.createStatement();
+    this.sessao = con.createStatement();
     return  sessao.executeQuery("select codigo, nome, cpf from hospede order by codigo");
 }
 }

@@ -6,7 +6,7 @@ import Model.Quarto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.hibernate.cfg.annotations.ResultsetMappingSecondPass;
+
 
 
 public class CadastroQuarto {
@@ -30,10 +30,31 @@ public class CadastroQuarto {
     ArrayList<Quarto> lista = new ArrayList<>();
     ResultSet campo = qua.preencheComboobx();
     while(campo.next()){
-      quarto.setCodigo(campo.getInt(1));
-      quarto.setNumero(campo.getInt(2));
-      lista.add(quarto);
+      Quarto qua_lista = new Quarto();
+      qua_lista.setCodigo(campo.getInt(1));
+      //qua_lista.setNumero(campo.get(2));
+      lista.add(qua_lista);
     }
     return lista;
   }
+  
+      
+    public ArrayList<Quarto> listarQuarto() throws SQLException{
+        ArrayList<Quarto> lista = new ArrayList<>();
+        ResultSet dados = this.qua.listar();
+        while(dados.next()){
+           Quarto quartoLita = new Quarto();
+           quartoLita.setCodigo(dados.getInt(1));
+           quartoLita.setNumero(dados.getInt(2));
+        
+           lista.add(quartoLita);
+        }
+      
+        return lista;
+    }
+    
+     public void excluirQuarto(String codigo) throws SQLException{
+      this.quarto.setNumero(Integer.parseInt(codigo));
+      this.qua.excluirQuarto(quarto);
+    }
 }

@@ -29,6 +29,7 @@ public class FormCadastroServico extends javax.swing.JFrame {
         jButtonExcluir = new javax.swing.JButton();
         jButtonListar = new javax.swing.JButton();
         jButtonIncluir = new javax.swing.JButton();
+        jTextFieldCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -67,6 +68,11 @@ public class FormCadastroServico extends javax.swing.JFrame {
 
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/edit.png"))); // NOI18N
         jButtonEditar.setEnabled(false);
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/excluir.png"))); // NOI18N
         jButtonExcluir.setEnabled(false);
@@ -124,9 +130,14 @@ public class FormCadastroServico extends javax.swing.JFrame {
                     .addComponent(jLabelValor))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButtonCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,7 +157,8 @@ public class FormCadastroServico extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelValor)
-                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonConfirma)
@@ -179,7 +191,11 @@ public class FormCadastroServico extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        // TODO add your handling code here:
+        ListaServico lista = new ListaServico(this, true);
+        lista.setLocationRelativeTo(null);
+        lista.setDefaultCloseOperation(lista.DISPOSE_ON_CLOSE);
+        lista.setVisible(true); 
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonListarActionPerformed
 
     private void jButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIncluirActionPerformed
@@ -214,20 +230,44 @@ public class FormCadastroServico extends javax.swing.JFrame {
     private void jToggleButtonCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCancelaActionPerformed
         dispose();
     }//GEN-LAST:event_jToggleButtonCancelaActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        habilitaEdicao();
+    }//GEN-LAST:event_jButtonEditarActionPerformed
     private void habilitaInsercao(){
+        jButtonIncluir.setEnabled(false);
+        jTextFieldDescricao.setEnabled(true);
+        jTextFieldDescricao.setText("");
+        jTextFieldValor.setEnabled(true);
+        jTextFieldValor.setText("");
+        jToggleButtonConfirma.setEnabled(true);
+        
+        operacao = "-1";
+    }
+    private void habilitaEdicao(){
         jButtonIncluir.setEnabled(false);
         jTextFieldDescricao.setEnabled(true);
         jTextFieldValor.setEnabled(true);
         jToggleButtonConfirma.setEnabled(true);
-        operacao = "-1";
+        jButtonEditar.setEnabled(false);
     }
     private void tela(){
         jButtonIncluir.setEnabled(true);
         jTextFieldDescricao.setEnabled(false);
         jTextFieldValor.setEnabled(false);
         jToggleButtonConfirma.setEnabled(false);
+        jTextFieldCodigo.setVisible(false);
         
     }
+    public void getCodigoTable(String codigo, String descricao, String valor){
+       //System.out.println("setou "+ codigo);
+     jTextFieldCodigo.setText(codigo);
+     jTextFieldDescricao.setText(descricao);
+     jTextFieldValor.setText(valor);
+     jButtonEditar.setEnabled(true);
+     operacao = codigo;
+     habilitaEdicao();
+   }
     /**
      * @param args the command line arguments
      */
@@ -272,6 +312,7 @@ public class FormCadastroServico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelValor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldDescricao;
     private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JToggleButton jToggleButtonCancela;
