@@ -6,7 +6,9 @@
 
 package View;
 
+import View.Listas.ListaClienteTeste;
 import Controller.CadastroCliente;
+import Controller.LimitaCaracter;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -169,16 +171,17 @@ public class FormCadastroCliente extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelModo))))
+                                        .addComponent(jLabelModo))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 262, Short.MAX_VALUE)
                                 .addComponent(jToggleButtonCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addComponent(jToggleButtonConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -321,9 +324,14 @@ public class FormCadastroCliente extends javax.swing.JFrame {
        jTextFieldCPF.setEnabled(false);
        jToggleButtonConfirma.setEnabled(false);
        jLabelModo.setText("");
+       
      }
+     
+     jTextFieldNome.setDocument(new LimitaCaracter(100));
+     jTextFieldCPF.setDocument(new LimitaCaracter(14));
+     
      //as linhas abaixo sao executada apos mudança no  campo codigo
-        jTextFieldCodigo.getDocument().addDocumentListener(new DocumentListener() {
+       jTextFieldCodigo.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 buscarDados();
             }
@@ -341,7 +349,7 @@ public class FormCadastroCliente extends javax.swing.JFrame {
                         jTextFieldNome.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getNome());
                         //cpf
                         jTextFieldCPF.setText(cadCliente.preencheCampos(jTextFieldCodigo.getText()).get(0).getCpf());
-                        tela();
+                       // tela();
                     } catch (ClassNotFoundException e) {
                         JOptionPane.showMessageDialog(null, e);
                     } catch (SQLException e) {

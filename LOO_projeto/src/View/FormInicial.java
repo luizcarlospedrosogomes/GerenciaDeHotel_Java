@@ -1,5 +1,6 @@
 package View;
 
+import View.Listas.ListaMapaOCupacao;
 import DAO.Banco;
 import java.awt.Container;
 import java.sql.SQLException;
@@ -31,6 +32,9 @@ public class FormInicial extends javax.swing.JFrame {
         jButtonCheckout = new javax.swing.JButton();
         jButtonChekin = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel4 = new javax.swing.JPanel();
+        jButtonMapaOcupacao = new javax.swing.JButton();
+        jButtonConsuno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,13 +164,50 @@ public class FormInicial extends javax.swing.JFrame {
                     .addComponent(jButtonChekin, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(143, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButtonMapaOcupacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cama.png"))); // NOI18N
+        jButtonMapaOcupacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMapaOcupacaoActionPerformed(evt);
+            }
+        });
+
+        jButtonConsuno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/service.png"))); // NOI18N
+        jButtonConsuno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsunoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonMapaOcupacao, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonConsuno, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonConsuno, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonMapaOcupacao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,19 +217,24 @@ public class FormInicial extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -201,6 +247,7 @@ public class FormInicial extends javax.swing.JFrame {
         cadastroServico.setLocationRelativeTo(null);
         cadastroServico.setDefaultCloseOperation(cadastroServico.DISPOSE_ON_CLOSE);
         cadastroServico.setVisible(true);
+        cadastroServico.setTitle("Cadastro de Serviço");
       
     }//GEN-LAST:event_jButtonCadastroServicoActionPerformed
 
@@ -209,6 +256,7 @@ public class FormInicial extends javax.swing.JFrame {
        cadastroQuarto.setLocationRelativeTo(null);
        cadastroQuarto.setDefaultCloseOperation(cadastroQuarto.DISPOSE_ON_CLOSE);
        cadastroQuarto.setVisible(true);
+       cadastroQuarto.setTitle("Cadastro de Quarto");
     }//GEN-LAST:event_jButtonCadastroQuartoActionPerformed
 
     private void jButtonCadastroCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroCliente1ActionPerformed
@@ -217,7 +265,7 @@ public class FormInicial extends javax.swing.JFrame {
         cadastroCliente.setLocationRelativeTo(null);
         cadastroCliente.setDefaultCloseOperation(cadastroCliente.DISPOSE_ON_CLOSE);
         cadastroCliente.setVisible(true);
-        
+        cadastroCliente.setTitle("Cadastro de Hospede");
     }//GEN-LAST:event_jButtonCadastroCliente1ActionPerformed
 
     private void jButtonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservaActionPerformed
@@ -225,19 +273,46 @@ public class FormInicial extends javax.swing.JFrame {
         reserva.setLocationRelativeTo(null);
         reserva.setDefaultCloseOperation(reserva.DISPOSE_ON_CLOSE);
         reserva.setVisible(true);
+        reserva.setTitle("Cadastro de Reserva");
     }//GEN-LAST:event_jButtonReservaActionPerformed
 
     private void jButtonCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckoutActionPerformed
-        // TODO add your handling code here:
+        FormCheckout checkout = new FormCheckout();
+        checkout.setLocationRelativeTo(null);
+        checkout.setDefaultCloseOperation(checkout.DISPOSE_ON_CLOSE);
+        checkout.setVisible(true);
+        checkout.setTitle("Checkout");
+    
     }//GEN-LAST:event_jButtonCheckoutActionPerformed
 
     private void jButtonChekinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChekinActionPerformed
-        // TODO add your handling code here:
+        FormCheckin checkin = new FormCheckin();
+        checkin.setLocationRelativeTo(null);
+        checkin.setDefaultCloseOperation(checkin.DISPOSE_ON_CLOSE);
+        checkin.setVisible(true);
+        checkin.setTitle("Ckeckin");
     }//GEN-LAST:event_jButtonChekinActionPerformed
 
     private void jDesktopPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDesktopPane1MouseClicked
      
     }//GEN-LAST:event_jDesktopPane1MouseClicked
+
+    private void jButtonMapaOcupacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMapaOcupacaoActionPerformed
+        ListaMapaOCupacao lista = new ListaMapaOCupacao(this, true);
+        lista.setLocationRelativeTo(null);
+        lista.setDefaultCloseOperation(lista.DISPOSE_ON_CLOSE);
+        lista.setVisible(true); 
+        //this.setVisible(false);
+        lista.setTitle("Lista de Quartos Ocupados");
+    }//GEN-LAST:event_jButtonMapaOcupacaoActionPerformed
+
+    private void jButtonConsunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsunoActionPerformed
+        FormConsumo consumo = new FormConsumo();
+        consumo.setLocationRelativeTo(null);
+        consumo.setDefaultCloseOperation(consumo.DISPOSE_ON_CLOSE);
+        consumo.setVisible(true);
+        consumo.setTitle("Serviços");
+    }//GEN-LAST:event_jButtonConsunoActionPerformed
     public void tela() throws ClassNotFoundException, SQLException {
          Banco st = new Banco();
          if(st.status()){
@@ -294,11 +369,14 @@ public class FormInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastroServico;
     private javax.swing.JButton jButtonCheckout;
     private javax.swing.JButton jButtonChekin;
+    private javax.swing.JButton jButtonConsuno;
+    private javax.swing.JButton jButtonMapaOcupacao;
     private javax.swing.JButton jButtonReserva;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabelStatusBanco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,8 @@
 package View;
 
+import View.Listas.ListaQuarto;
 import Controller.CadastroQuarto;
+import Controller.LimitaCaracter;
 import Model.Quarto;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -226,18 +228,15 @@ public class FormCadastroQuarto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
  public void getCodigoTable(String codigo){
-       //System.out.println("setou "+ codigo);
      jTextFieldNumero.setText(codigo);
    }
   public void tela(){
     jTextFieldNumero.setEnabled(false);
-   // jComboBoxTipo.setEnabled(false);
     jButtonIncluir.setEnabled(true);
+    jTextFieldNumero.setDocument(new LimitaCaracter(5));
     try{
         CadastroQuarto cadQuarto = new CadastroQuarto();
         ArrayList<Quarto> listaQuarto = cadQuarto.preencheCombobox();
-        //DefaultComboBoxModel defaultComboBox = new DefaultComboBoxModel(listaQuarto.get(0).getCodigo());  
-        //jComboBoxTipo.setModel(defaultComboBox); 
         
     } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(this, e);

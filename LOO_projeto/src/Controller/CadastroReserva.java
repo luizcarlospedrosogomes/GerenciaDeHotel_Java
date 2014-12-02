@@ -3,6 +3,7 @@ package Controller;
 import DAO.ReservaDAO;
 import Model.Hospede;
 import Model.Reserva;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -22,11 +23,12 @@ public CadastroReserva()throws ClassNotFoundException, SQLException{
 
 }
 
-public boolean inserirReserva(String codigoCliente, String dataInicio, String dataFim) throws SQLException, ParseException{
-    if(!codigoCliente.equals("") && !dataInicio.equals("") && !dataFim.equals("")){
-        
+public boolean inserirReserva(String codigoCliente, String dataInicio, String dataFim, String valorDiaria) throws SQLException, ParseException{
+    if(!codigoCliente.equals("") && !dataInicio.equals("") && !dataFim.equals("") && !valorDiaria.equals("")){
+        double  valor = Double.parseDouble(valorDiaria);
         this.hospede.setCodigo(Integer.parseInt(codigoCliente));
         this.reserva.setHospede(this.hospede);
+        this.reserva.setValorDiaria(BigDecimal.valueOf(valor));
         this.reserva.setDataInicio(converteData(dataInicio));
         this.reserva.setDataFim(converteData(dataFim));
         this.res.inserirReserva(reserva);

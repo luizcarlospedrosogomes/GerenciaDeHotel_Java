@@ -12,7 +12,7 @@ public class Status  implements java.io.Serializable {
      private int codigo;
      private Hospede hospede;
      private Quarto quarto;
-
+     private Reserva reserva;
     public Status() {
     }
 
@@ -46,6 +46,20 @@ public class Status  implements java.io.Serializable {
     
     public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
+    }
+
+    /**
+     * @return the reserva
+     */
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    /**
+     * @param reserva the reserva to set
+     */
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 
 

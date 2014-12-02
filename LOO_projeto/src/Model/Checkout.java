@@ -13,7 +13,9 @@ public class Checkout  implements java.io.Serializable {
      private int codigo;
      private Hospede hospede;
      private Date dataCheckout;
-
+     private Reserva reserva;
+     private Integer periodo;
+     private Servico servico;
     public Checkout() {
     }
 
@@ -47,6 +49,48 @@ public class Checkout  implements java.io.Serializable {
     
     public void setDataCheckout(Date dataCheckout) {
         this.dataCheckout = dataCheckout;
+    }
+
+    /**
+     * @return the reserva
+     */
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    /**
+     * @param reserva the reserva to set
+     */
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    /**
+     * @return the periodo
+     */
+    public Integer getPeriodo() {
+        return periodo;
+    }
+
+    /**
+     * @param periodo the periodo to set
+     */
+    public void setPeriodo(Integer periodo) {
+        this.periodo = periodo;
+    }
+
+    /**
+     * @return the servico
+     */
+    public Servico getServico() {
+        return servico;
+    }
+
+    /**
+     * @param servico the servico to set
+     */
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
 

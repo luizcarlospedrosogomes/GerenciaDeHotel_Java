@@ -58,4 +58,17 @@ public class CadastroServico {
 
     return lista;
     }
+    
+    public ArrayList<Servico> buscaServico(String codigo) throws SQLException{
+        ArrayList<Servico> lista = new ArrayList<>();
+        ResultSet dados = this.ser.buscaServico(codigo);
+        while (dados.next()) {
+            Servico servicoLista = new Servico();
+            servicoLista.setDescricao(dados.getString("descricao"));
+            servicoLista.setValor(dados.getBigDecimal("valor"));
+            lista.add(servicoLista);
+        }
+
+        return lista;
+    }
 }

@@ -55,3 +55,4 @@ alter table hospede add constraint cpf_unico unique(cpf);
 
 alter table quarto add column tipo integer;
 alter table quarto add constraint quarto_numero unique(numero);
+alter table status add column cod_reserva integer

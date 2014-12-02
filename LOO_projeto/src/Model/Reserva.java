@@ -2,6 +2,7 @@ package Model;
 // Generated 18/11/2014 01:42:29 by Hibernate Tools 3.6.0
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,6 +17,7 @@ public class Reserva  implements java.io.Serializable {
      private Date dataFim;
      private Integer confirmado;
      private int codigoCliente;
+     private BigDecimal valorDiaria;
     public Reserva() {
     }
 
@@ -79,6 +81,20 @@ public class Reserva  implements java.io.Serializable {
      */
     public void setCodigoCliente(int codigoCliente) {
         this.codigoCliente = codigoCliente;
+    }
+
+    /**
+     * @return the valorDiaria
+     */
+    public BigDecimal getValorDiaria() {
+        return valorDiaria;
+    }
+
+    /**
+     * @param valorDiaria the valorDiaria to set
+     */
+    public void setValorDiaria(BigDecimal valorDiaria) {
+        this.valorDiaria = valorDiaria;
     }
 
   

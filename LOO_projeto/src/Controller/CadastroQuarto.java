@@ -2,6 +2,7 @@
 package Controller;
 
 import DAO.QuartoDAO;
+import Model.Hospede;
 import Model.Quarto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,5 +57,22 @@ public class CadastroQuarto {
      public void excluirQuarto(String codigo) throws SQLException{
       this.quarto.setNumero(Integer.parseInt(codigo));
       this.qua.excluirQuarto(quarto);
+    }
+     
+    public ArrayList<Quarto> listaOcupacao() throws SQLException{
+        ArrayList<Quarto> lista = new ArrayList<>();
+         ResultSet dados = this.qua.listarOcupacao();
+        while(dados.next()){
+           Quarto quartoLita = new Quarto();
+           Hospede hospedeLista = new Hospede();
+           quartoLita.setCodigo(dados.getInt("codigo"));
+           quartoLita.setNumero(dados.getInt("numero"));
+           hospedeLista.setNome(dados.getString("nome"));
+           quartoLita.setHospede(hospedeLista);
+        
+           lista.add(quartoLita);
+        }
+      
+        return lista;
     }
 }

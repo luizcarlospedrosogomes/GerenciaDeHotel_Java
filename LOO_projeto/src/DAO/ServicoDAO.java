@@ -39,4 +39,10 @@ public class ServicoDAO extends Banco{
     this.sessao = con.createStatement();
     return  sessao.executeQuery("select codigo, descricao, valor from servico order by codigo");
     }
+    
+    public ResultSet buscaServico(String codigo) throws SQLException{
+    this.sessao = con.createStatement();
+    return  sessao.executeQuery("select descricao, valor from servico where codigo = "+codigo);
+  
+}
 }

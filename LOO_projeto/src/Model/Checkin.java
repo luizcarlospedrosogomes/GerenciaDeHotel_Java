@@ -13,6 +13,7 @@ public class Checkin  implements java.io.Serializable {
      private int codigo;
      private Hospede hospede;
      private Date dataCheckin;
+     
 
     public Checkin() {
     }

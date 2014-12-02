@@ -11,7 +11,7 @@ public class Quarto  implements java.io.Serializable {
      private Integer numero;
      private Integer tipo;
      private Set statuses = new HashSet(0);
-
+     private Hospede hospede;
     public Quarto() {
     }
 
@@ -59,6 +59,20 @@ public class Quarto  implements java.io.Serializable {
      */
     public void setTipo(Integer tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * @return the hospede
+     */
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    /**
+     * @param hospede the hospede to set
+     */
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
     }
 
 

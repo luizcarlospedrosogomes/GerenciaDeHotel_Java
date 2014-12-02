@@ -12,6 +12,7 @@ public class ConsumoServico  implements java.io.Serializable {
      private int codigo;
      private Servico servico;
      private Hospede hospede;
+     private Reserva reserva;
 
     public ConsumoServico() {
     }
@@ -46,6 +47,20 @@ public class ConsumoServico  implements java.io.Serializable {
     
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
+    }
+
+    /**
+     * @return the reserva
+     */
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    /**
+     * @param reserva the reserva to set
+     */
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 
 

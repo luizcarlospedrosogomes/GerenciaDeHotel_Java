@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Reserva;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,12 +13,12 @@ public class ReservaDAO extends Banco{
     public ReservaDAO()throws ClassNotFoundException, SQLException{} 
     
     public void inserirReserva(Reserva reserva) throws SQLException{
-        this.ps = con.prepareStatement("insert into reserva(cod_cliente, data_inicio, data_fim, confirmado) values (?, ?, ?, ?)");
-        System.out.println("codgo reserva a ser inserio em DAO >" + reserva.getCodigo());
+        this.ps = con.prepareStatement("insert into reserva(cod_cliente, data_inicio, data_fim, confirmado, valor_diaria) values (?, ?, ?, ?, ?)");
         this.ps.setInt(1, reserva.getHospede().getCodigo());
         this.ps.setDate(2, (Date) reserva.getDataInicio());
         this.ps.setDate(3, (Date) reserva.getDataFim());
         this.ps.setInt(4, 0);
+        this.ps.setBigDecimal(5, reserva.getValorDiaria());
         this.ps.executeUpdate();        
     }
      

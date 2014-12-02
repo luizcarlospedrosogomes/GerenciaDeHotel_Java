@@ -1,7 +1,9 @@
 
 package View;
 
+import View.Listas.ListaServico;
 import Controller.CadastroServico;
+import Controller.LimitaCaracter;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -266,6 +268,8 @@ public class FormCadastroServico extends javax.swing.JFrame {
         jTextFieldValor.setEnabled(false);
         jToggleButtonConfirma.setEnabled(false);
         jTextFieldCodigo.setVisible(false);
+        jTextFieldDescricao.setDocument(new LimitaCaracter(40));
+        jTextFieldValor.setDocument(new LimitaCaracter(10));
         
     }
     public void getCodigoTable(String codigo, String descricao, String valor){
